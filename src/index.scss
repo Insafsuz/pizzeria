@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +7,35 @@
 
 body {
   background-color: #ffdf8c;
-  font-family: Poppins;
+  font-family: Roboto;
+  font-size: 14px;
 }
+
+.App {
+  width: 1340px;
+  height: 1409px;
+  background: #ffffff;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  margin: 40px auto;
+}
+
+.container {
+  max-width: 1225px;
+  margin: 0px auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+li {
+  list-style: none;
+  font-family: Roboto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
