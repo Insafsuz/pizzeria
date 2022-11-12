@@ -1,14 +1,5 @@
-import { Categories, Header } from '../components'
-
 const Home = () => {
-  return (
-    <div>
-      <Header />
-      <div className='container'>
-        <Categories />
-      </div>
-    </div>
-  )
+  return <div>Home</div>
 }
 
 export default Home
