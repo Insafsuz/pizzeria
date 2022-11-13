@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-  max-width: 1225px;
+  max-width: 1255px;
   margin: 0px auto;
 }
 
@@ -34,14 +34,4 @@ a {
 li {
   list-style: none;
   font-family: Roboto;
-}
-
-.sort {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

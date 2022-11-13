@@ -1,0 +1,27 @@
+.sort {
+  position: relative;
+  &__text {
+    span {
+      color: #fe5f1e;
+      cursor: pointer;
+    }
+  }
+  &__list {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 132px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    background-color: #fff;
+    border-radius: 10px;
+  }
+}
+.list-sort {
+  &__item {
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 17px;
+    color: #fe5f1e;
+    padding: 10px 0px 10px 14px;
+  }
+}

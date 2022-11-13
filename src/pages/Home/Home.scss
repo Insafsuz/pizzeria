@@ -1,0 +1,16 @@
+.home {
+  &__filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0;
+  }
+  &__title {
+    font-size: 32px;
+  }
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(210px, 1fr));
+    gap: 35px;
+  }
+}
