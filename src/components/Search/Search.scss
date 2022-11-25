@@ -1,0 +1,26 @@
+.search {
+  position: relative;
+  &__input {
+    width: 300px;
+    height: 35px;
+    padding: 0 10px 0px 30px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid silver;
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 16px;
+  }
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+  }
+}

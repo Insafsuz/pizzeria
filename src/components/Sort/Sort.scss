@@ -19,9 +19,11 @@
 .list-sort {
   &__item {
     cursor: pointer;
-    font-weight: 700;
     line-height: 17px;
-    color: #fe5f1e;
+    color: #000000;
     padding: 10px 0px 10px 14px;
+    &.active {
+      color: #fe5f1e;
+    }
   }
 }

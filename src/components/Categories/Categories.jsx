@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import './Categories.scss'
 
-const Categories = () => {
-  const [activeIndex, setActiveIndex] = useState(0)
+const Categories = ({ value, onChangeCategory }) => {
   const list = ['Все', 'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые']
 
   return (
     <ul className='categories'>
-      {list.map((item, i) => (
+      {list.map((name, i) => (
         <li
-          onClick={() => setActiveIndex(i)}
+          onClick={() => onChangeCategory(i)}
           key={i}
-          className={`categories__item ${activeIndex === i ? 'active' : ''}`}
+          className={`categories__item ${value === i ? 'active' : ''}`}
         >
-          {item}
+          {name}
         </li>
       ))}
     </ul>

@@ -1,24 +1,42 @@
+import { useState } from 'react'
 import { BiPlus } from 'react-icons/bi'
 import './Card.scss'
 
-const Card = () => {
+const Card = ({ item }) => {
+  const [activeType, setActiveType] = useState(0)
+  const [activeSize, setActiveSize] = useState(0)
+  const typeNames = ['тонкое', 'традиционное']
+
   return (
     <div className='card'>
-      <img src='' alt='' className='card__img' />
-      <h3 className='card__title'>Чизбургер-пицца</h3>
+      <img src={item.imageUrl} alt='' className='card__img' />
+      <h3 className='card__title'>{item.name}</h3>
       <div className='card__filter filter-card'>
         <ul className='filter-card__list'>
-          <li className='filter-card__item'>тонкое</li>
-          <li className='filter-card__item'>традиционное</li>
+          {item.types.map(i => (
+            <li
+              onClick={() => setActiveType(i)}
+              key={i}
+              className={`filter-card__item ${activeType === i ? 'active' : ''}`}
+            >
+              {typeNames[i]}
+            </li>
+          ))}
         </ul>
         <ul className='filter-card__list'>
-          <li className='filter-card__item'>26см</li>
-          <li className='filter-card__item'>30см</li>
-          <li className='filter-card__item'>40см</li>
+          {item.sizes.map((size, i) => (
+            <li
+              onClick={() => setActiveSize(i)}
+              key={i}
+              className={`filter-card__item ${activeSize === i ? 'active' : ''}`}
+            >
+              {size} см
+            </li>
+          ))}
         </ul>
       </div>
       <div className='card__footer footer-card'>
-        <span className='footer-card__price'>от 395 ₽</span>
+        <span className='footer-card__price'>от {item.price} ₽</span>
         <button className='footer-card__btn'>
           <BiPlus size='20px' /> Добавить <span>3</span>
         </button>
