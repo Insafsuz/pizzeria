@@ -1,27 +1,29 @@
 import { useContext, useEffect, useState } from 'react'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCategoryId, setCurrentPage, setSortType } from '../../redux/slices/filterSlice'
+import './Home.scss'
 import { SearchContext } from '../../App'
 import { Card, Categories, Pagination, Sort } from '../../components'
 import { CardSkeleton } from '../../components/Card/CardSkeleton'
-import './Home.scss'
 
 const Home = () => {
+  const dispatch = useDispatch()
+  const { categoryId, currentPage, sortType } = useSelector(state => state.filter)
   const [items, setItems] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [categoryId, setCategoryId] = useState(0)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [sortType, setSortType] = useState({ name: 'популярности', sortProperty: 'rating' })
   const { searchValue } = useContext(SearchContext)
 
   const category = categoryId > 0 ? `category=${categoryId}` : ''
   const search = searchValue ? `&search=${searchValue}` : ''
 
   useEffect(() => {
-    fetch(
-      `https://62e51da8c6b56b45118f4462.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortType.sortProperty}${search}`
-    )
-      .then(res => res.json())
-      .then(json => {
-        setItems(json)
+    axios
+      .get(
+        `https://62e51da8c6b56b45118f4462.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortType.sortProperty}${search}`
+      )
+      .then(res => {
+        setItems(res.data)
         setIsLoading(false)
       })
   }, [categoryId, sortType, searchValue, currentPage])
@@ -32,12 +34,12 @@ const Home = () => {
     <div className='home'>
       <div className='container'>
         <div className='home__filters'>
-          <Categories value={categoryId} onChangeCategory={i => setCategoryId(i)} />
-          <Sort value={sortType} onChangeSort={obj => setSortType(obj)} />
+          <Categories value={categoryId} onChangeCategory={i => dispatch(setCategoryId(i))} />
+          <Sort value={sortType} onChangeSort={obj => dispatch(setSortType(obj))} />
         </div>
         <h2 className='home__title'>Все пиццы</h2>
-        <div className='home__cards'>{isLoading ? <CardSkeleton cards={10} /> : pizzas}</div>
-        <Pagination onChangePage={number => setCurrentPage(number)} />
+        <div className='home__cards'>{isLoading ? <CardSkeleton cards={4} /> : pizzas}</div>
+        <Pagination onChangePage={number => dispatch(setCurrentPage(number))} />
       </div>
     </div>
   )
