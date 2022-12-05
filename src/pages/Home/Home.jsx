@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 import { setCategoryId, setCurrentPage, setSortType } from '../../redux/slices/filterSlice'
 import './Home.scss'
 import { SearchContext } from '../../App'
@@ -26,7 +26,7 @@ const Home = () => {
         setItems(res.data)
         setIsLoading(false)
       })
-  }, [categoryId, sortType, searchValue, currentPage])
+  }, [categoryId, sortType.sortProperty, searchValue, currentPage])
 
   const pizzas = items.map(item => <Card key={item.id} item={item} />)
 

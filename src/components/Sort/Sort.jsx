@@ -1,22 +1,37 @@
+import { useEffect } from 'react'
+import { useRef } from 'react'
 import { useState } from 'react'
 import './Sort.scss'
 
+export const sortList = [
+  { name: 'популярности', sortProperty: 'rating' },
+  { name: 'цене', sortProperty: 'price' },
+  { name: 'алфавиту', sortProperty: 'title' },
+]
+
 const Sort = ({ value, onChangeSort }) => {
   const [activeSort, setActiveSort] = useState(false)
-
-  const sortList = [
-    { name: 'популярности', sortProperty: 'rating' },
-    { name: 'цене', sortProperty: 'price' },
-    { name: 'алфавиту', sortProperty: 'title' },
-  ]
+  const sortRef = useRef()
 
   const onClickSort = obj => {
     onChangeSort(obj)
     setActiveSort(false)
   }
 
+  useEffect(() => {
+    const handleOutsideClick = e => {
+      if (!e.path.includes(sortRef.current)) {
+        setActiveSort(false)
+      }
+    }
+    document.body.addEventListener('click', handleOutsideClick)
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
+
   return (
-    <div className='sort'>
+    <div ref={sortRef} className='sort'>
       <p onClick={() => setActiveSort(!activeSort)} className='sort__text'>
         Сортировка по: <span>{value.name}</span>
       </p>

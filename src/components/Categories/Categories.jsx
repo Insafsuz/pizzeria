@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Categories.scss'
 
 const Categories = ({ value, onChangeCategory }) => {
