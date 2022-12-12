@@ -1,0 +1,16 @@
+.item {
+  margin: 0px 0px 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__img {
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+  span {
+    padding: 0 15px;
+  }
+}

@@ -29,7 +29,6 @@ const Home = () => {
   }, [categoryId, sortType.sortProperty, searchValue, currentPage])
 
   const pizzas = items.map(item => <Card key={item.id} item={item} />)
-
   return (
     <div className='home'>
       <div className='container'>

@@ -1,0 +1,28 @@
+.cart {
+  max-width: 820px;
+  margin: 0px auto;
+  padding: 100px 0px 0px 0px;
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 0px 55px 0px;
+  }
+  &__title {
+  }
+  &__btn {
+  }
+  &__items {
+  }
+}
+.cart {
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__all {
+  }
+  &__price {
+  }
+}

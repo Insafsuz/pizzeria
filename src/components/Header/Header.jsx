@@ -3,8 +3,13 @@ import { FaShoppingCart } from 'react-icons/fa'
 import logo from '../../assets/logo.png'
 import './Header.scss'
 import { Search } from '../Search'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+  const { items, totalPrice } = useSelector(state => state.cart)
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+
   return (
     <header className='header'>
       <Link to='/' className='header__logo'>
@@ -13,10 +18,10 @@ const Header = () => {
       </Link>
       <Search />
       <Link to='/cart' className='header__btn btn-header'>
-        <p className='btn-header__text'>520 ₽</p>
+        <p className='btn-header__text'>{totalPrice} ₽</p>
         <div className='btn-header__icon'>
           <FaShoppingCart />
-          <span>3</span>
+          <span>{totalCount}</span>
         </div>
       </Link>
     </header>
