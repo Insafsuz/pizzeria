@@ -1,23 +1,24 @@
-import { useContext, useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { BiSearch } from 'react-icons/bi'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import debounce from 'lodash.debounce'
 import './Search.scss'
-import { SearchContext } from '../../App'
+import { setSearchValue } from '../../redux/slices/filterSlice'
 
 const Search = () => {
+  const dispatch = useDispatch()
   const inputRef = useRef()
   const [value, setValue] = useState('')
-  const { setSearchValue } = useContext(SearchContext)
 
   const onClickClear = () => {
     setValue('')
-    setSearchValue('')
+    dispatch(setSearchValue(''))
     inputRef.current.focus()
   }
 
   const updateSearchValue = useCallback(
-    debounce(str => setSearchValue(str), 300),
+    debounce(str => dispatch(setSearchValue(str)), 300),
     []
   )
 
